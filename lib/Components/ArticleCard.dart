@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frontenderp/Components/ImageNotSupported.dart';
 import 'package:frontenderp/Pages/ArticlePage.dart';
 import 'package:frontenderp/types/Article.dart';
 
@@ -34,15 +35,18 @@ class ArticleCard extends StatelessWidget {
         padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
         child: Row(
           children: [
-            article.urlImg != null
+            article.urlImg != null && article.urlImg!.isNotEmpty
                 ? Image.network(
                     article.urlImg!,
                     width: 80,
                     height: 80,
                     fit: BoxFit.contain,
+                    errorBuilder: (context, error, stackTrace) =>
+                        Imagenotsupported(size: 80.0),
                   )
-                : SizedBox(width: 80),
-            SizedBox(width: 12), // espace entre image et texte
+                : Imagenotsupported(size: 80.0),
+
+            SizedBox(width: 12),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -52,12 +56,14 @@ class ArticleCard extends StatelessWidget {
                     style: TextStyle(fontWeight: FontWeight.w900),
                   ),
                   Text(
-                    article.price + "\u20AC",
+                    "${article.price} €",
                     style: TextStyle(fontWeight: FontWeight.w500),
                   ),
                   Text(
                     article.description,
                     style: TextStyle(fontWeight: FontWeight.w500),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ],
               ),

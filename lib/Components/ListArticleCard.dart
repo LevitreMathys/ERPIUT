@@ -32,7 +32,18 @@ class _ListArticleCardState extends State<ListArticleCard> {
         final articles = snapshot.data!;
         return Column(
           spacing: 12,
-          children: articles.map((a) => ArticleCard(article: a)).toList(),
+          children: [
+            ElevatedButton.icon(
+              onPressed: () {
+                setState(() {
+                  _articles = loadArticles();
+                });
+              },
+              icon: Icon(Icons.refresh),
+              label: Text("Actualiser"),
+            ),
+            ...articles.map((a) => ArticleCard(article: a)),
+          ],
         );
       },
     );
