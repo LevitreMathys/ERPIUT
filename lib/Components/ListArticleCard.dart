@@ -23,26 +23,39 @@ class _ListArticleCardState extends State<ListArticleCard> {
       future: _articles,
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return CircularProgressIndicator(); // chargement
+          return const Center(child: CircularProgressIndicator());
         }
         if (snapshot.hasError) {
-          return Text('Erreur : ${snapshot.error}');
+          return Center(child: Text('Erreur : ${snapshot.error}'));
         }
 
-        final articles = snapshot.data!;
+        final articles = snapshot.data ?? [];
+
         return Column(
-          spacing: 12,
           children: [
-            ElevatedButton.icon(
-              onPressed: () {
-                setState(() {
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              child: ElevatedButton.icon(
+                onPressed: () => setState(() {
                   _articles = loadArticles();
-                });
-              },
-              icon: Icon(Icons.refresh),
-              label: Text("Actualiser"),
+                }),
+                icon: const Icon(Icons.refresh),
+                label: const Text("Actualiser"),
+              ),
             ),
-            ...articles.map((a) => ArticleCard(article: a)),
+
+            Expanded(
+              child: ListView.builder(
+                padding: const EdgeInsets.all(8),
+                itemCount: articles.length,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.only(bottom: 12.0),
+                    child: ArticleCard(article: articles[index]),
+                  );
+                },
+              ),
+            ),
           ],
         );
       },
