@@ -32,16 +32,7 @@ class _ListArticleCardState extends State<ListArticleCard> {
         final articles = snapshot.data!;
         return Column(
           spacing: 12,
-          children: articles
-              .map(
-                (a) => ArticleCard(
-                  urlImg: a.urlImg,
-                  name: a.name,
-                  price: a.price,
-                  description: a.description,
-                ),
-              )
-              .toList(),
+          children: articles.map((a) => ArticleCard(article: a)).toList(),
         );
       },
     );
