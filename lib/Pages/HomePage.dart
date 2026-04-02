@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frontenderp/Components/HeaderFournisseur.dart';
 import 'package:frontenderp/Components/ListArticleCard.dart';
 
 class Homepage extends StatelessWidget {
@@ -6,7 +7,10 @@ class Homepage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: /*Text("Les articles vont s'afficher ici")*/ Column(
-        children: [ListArticleCard()],
+        children: [
+          Headerfournisseur(),
+          Expanded(child: ListArticleCard()),
+        ],
       ),
     );
   }
