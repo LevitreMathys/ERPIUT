@@ -1,0 +1,38 @@
+[
+  {
+    "id": 260311000000003,
+    "name": "DESQUENNE A 5 PRO",
+    "price": 180.0,
+    "image": "https://m.media-amazon.com/images/I/71XS4zsY3CL._AC_SL1500_.jpg",
+    "description": "A5 Pro 5G "
+  },
+  {
+    "id": 260311000000004,
+    "name": "DESQUENNEA 6 PRO",
+    "price": 219.0,
+    "image": "https://m.media-amazon.com/images/I/61A0e-Bl46L._AC_SL1500_.jpg",
+    "description": "A6 Pro 5G Smartphone Débloqué "
+  },
+  {
+    "id": 260122000000046,
+    "name": "DESQUENNEFINDX 9",
+    "price": 500.0,
+    "image": "https://m.media-amazon.com/images/I/61fctUjwT9L._AC_SL1500_.jpg",
+    "description": "OPPO Find X9 5G 12Go 512Go Noir Écran 6. "
+  },
+  {
+    "id": 260311000000002,
+    "name": "DESQUENNERENO 14 F",
+    "price": 319.0,
+    "image": "https://m.media-amazon.com/images/I/41x0C2wTQCL._AC_.jpg",
+    "description": "Reno 14F 5G "
+  },
+  {
+    "id": 260311000000001,
+    "name": "DESQUENNERENO 15 PRO",
+    "price": 709.0,
+    "image": "https://m.media-amazon.com/images/I/61b4ErkenPL._AC_SL1500_.jpg",
+    "description": "Reno 15 Pro 5G "
+  }
+]
+
