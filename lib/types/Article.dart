@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class Article {
   final String? urlImg;
   final String name;
@@ -12,9 +14,10 @@ class Article {
   });
 
   factory Article.fromJson(Map<String, dynamic> json) {
-    print('json image = ${json['image']}'); // ← ajoute ça
     return Article(
-      urlImg: json['image'] as String?,
+      urlImg: (json['image'] != null && json['image'] != '')
+          ? json['image'] as String
+          : null,
       name: json['name'],
       price: json['price'].toString(),
       description: json['description'],
