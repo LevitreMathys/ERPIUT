@@ -15,15 +15,16 @@ class ArticleCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('urlImg: $urlImg'); // Debug: affiche la valeur de urlImg
     return Container(
       decoration: BoxDecoration(
         color: Color(0xFFF5F5F5),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.2), // couleur de l'ombre
-            blurRadius: 1, // flou
-            spreadRadius: 2, // expansion
-            offset: Offset(0, 1), // décalage (x, y)
+            color: Colors.black.withOpacity(0.2),
+            blurRadius: 1,
+            spreadRadius: 2,
+            offset: Offset(0, 1),
           ),
         ],
         borderRadius: BorderRadius.circular(20),
@@ -31,16 +32,30 @@ class ArticleCard extends StatelessWidget {
       padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
       child: Row(
         children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(this.name, style: TextStyle(fontWeight: FontWeight.w900)),
-              Text(this.price, style: TextStyle(fontWeight: FontWeight.w500)),
-              Text(
-                this.description,
-                style: TextStyle(fontWeight: FontWeight.w500),
-              ),
-            ],
+          urlImg != null
+              ? Image.network(
+                  urlImg!,
+                  width: 80,
+                  height: 80,
+                  fit: BoxFit.contain,
+                )
+              : SizedBox(width: 80),
+          SizedBox(width: 12), // espace entre image et texte
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(name, style: TextStyle(fontWeight: FontWeight.w900)),
+                Text(
+                  price + "\u20AC",
+                  style: TextStyle(fontWeight: FontWeight.w500),
+                ),
+                Text(
+                  description,
+                  style: TextStyle(fontWeight: FontWeight.w500),
+                ),
+              ],
+            ),
           ),
         ],
       ),
